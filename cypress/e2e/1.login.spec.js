@@ -7,7 +7,7 @@ describe("Login Test Scenario", () => {
       this.user = user;
     });
   });
-  it("should display the login page", () => {
+  it("should display the login page and elements", () => {
     //login Page title
     cy.contains("GOR").should("exist").should("have.text", "GOR");
     cy.contains("Pathology & Diagnostic").should("exist").should("have.text", "Pathology & Diagnostic");
