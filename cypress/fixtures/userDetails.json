@@ -1,0 +1,17 @@
+{
+  "TEST_URL": "https://gor-pathology.web.app/",
+
+  "username": "test@kennect.io",
+  "password": "Qwerty@1234",
+  "invalidUsername": "test@gmail.com",
+  "invalidPassword": "invalid-password",
+  "linksAsArray": ["Dashboard", "Tests", "Inventory", "Patients", "Labs", "Doctors", "Accounting"],
+  "allDiscount": ["None", "5%", "10%", "15%", "20%"],
+
+  "height": "170",
+  "weight": "70",
+  "gender": "male",
+  "age": "25",
+  "systolic": "120",
+  "diastolic": "60"
+}
