@@ -3,6 +3,7 @@ module.exports = {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    experimentalRunAllSpecs: true,
     env: {
       TEST_URL: "https://gor-pathology.web.app/",
     },

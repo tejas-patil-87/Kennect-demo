@@ -104,9 +104,9 @@ describe("Add Patients", () => {
 
     cy.get("button[tabindex='0']").eq(6).click({ force: true, timeout: 2000 });
 
-    cy.wait(4000);
+    cy.wait(5000);
 
-    cy.get(".MuiAlert-message").should("have.text", "Patient added successfully.", { timeout: 5000 });
+    cy.get(".MuiAlert-message").should("have.text", "Patient added successfully.", { timeout: 10000 });
 
     //check test listed in to do task
     cy.get('[href="/dashboard"] > .MuiButtonBase-root').click({

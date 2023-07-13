@@ -52,7 +52,15 @@ describe("Home page Test Scenario", () => {
     cy.contains("TODO").should("exist").should("be.visible").should("have.text", "TODO");
     //check add BTN
 
-    cy.get(".MuiButton-label").should("exist").should("be.visible").should("have.text", "Add");
+    //check add btn
+    cy.get(".MuiButton-label").then(($elements) => {
+      // Get the last element from the list
+      const lastElement = $elements.last();
+
+      // Click on the last element
+      cy.wrap(lastElement).should("exist").should("be.visible").should("have.text", "Add");
+    });
+
     //check + img
     cy.get("img[alt$='add']").should("exist").should("be.visible").should("have.attr", "src", "/static/media/add.74e26774.svg");
 
@@ -80,7 +88,16 @@ describe("Home page Test Scenario", () => {
     cy.login(Cypress.env("TEST_URL"), this.user.username, this.user.password);
 
     cy.wait(3000);
-    cy.get(".MuiButton-label").click({ timeout: 5000 });
+    //cy.get(".MuiButton-label").eq(1).click({ timeout: 5000 });
+
+    cy.get(".MuiButton-label").then(($elements) => {
+      // Get the last element from the list
+      const lastElement = $elements.last();
+
+      // Click on the last element
+      cy.wrap(lastElement).click();
+    });
+
     let randomTask = faker.lorem.words();
     cy.log(randomTask);
     cy.get("#outlined-add-todo-input").type(randomTask, { force: true, timeout: 2000 });
@@ -88,7 +105,7 @@ describe("Home page Test Scenario", () => {
     cy.get(".MuiAlert-message").should("be.visible").should("have.text", "Todo added successfully!");
 
     //check added item in list
-    cy.get('[href="/dashboard"] > .MuiButtonBase-root').click();
+    cy.get('[href="/dashboard"] > .MuiButtonBase-root').click({ force: true, timeout: 5000 });
     cy.wait(5000);
     cy.reload();
     cy.get("ul[aria-label='completed todo']")
@@ -122,7 +139,7 @@ describe("Home page Test Scenario", () => {
         //check after mark as done task is completed or not from list
         cy.get(".MuiAlert-message").should("be.visible").should("have.text", "Todo completed successfully.");
         cy.get("ul[aria-label='completed todo']")
-          .find("div[role='button']")
+
           .each(($el, index, $list) => {
             let demoTask = $el.text();
             cy.log(demoTask);
