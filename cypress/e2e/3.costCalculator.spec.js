@@ -42,19 +42,9 @@ describe("Cost Calculator for Blood Test Scenario", () => {
 
     cy.get(".MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth")
       .find('div[role="button"]')
-      .each(($el, index, $list) => {
-        //let testText = $el.text();
-        // let price = parseInt(testText.replace(/\D/g, ""));
-        // cy.log(price);
-        // subtotal += price;
-
-        let testText = $el.text();
-
-        const values = testText.split(" ");
-        let finalValue = values[values.length - 1];
-        let price = finalValue.slice(0, -1);
-        let priceInt = parseInt(price);
-        cy.log(priceInt);
+      .each(($el) => {
+        const priceText = $el.text().split(" ").pop();
+        const priceInt = parseInt(priceText.slice(0, -1));
         subtotal += priceInt;
       })
       .then(() => {

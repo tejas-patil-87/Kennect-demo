@@ -1,0 +1,10 @@
+{
+  "emailConfig": {
+    "serviceProvider": "Gmail",
+    "senderEmailAddresser": "test@gmail.com",
+    "senderEmailPassword": "1234567890",
+    "recipientEmailAddresser": "testrecipient@gmail.com",
+    "subject": "Cypress Automated Test Report",
+    "body": "Please find attached the latest automated test report for your review."
+  }
+}
