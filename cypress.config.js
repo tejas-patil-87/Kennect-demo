@@ -32,5 +32,5 @@ module.exports = {
   chromeWebSecurity: false,
   defaultCommandTimeout: 6000,
   pageLoadTimeout: 10000,
-  experimentalSessionAndOrigin: true,
+  // experimentalSessionAndOrigin: true,
 };

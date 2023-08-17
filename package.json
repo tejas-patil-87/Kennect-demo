@@ -8,11 +8,15 @@
     "nodemailer": "^6.9.4"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.0.2"
+    "@faker-js/faker": "^8.0.2",
+    "rimraf": "^5.0.1"
   },
   "scripts": {
-    "cy:run": "npx cypress run",
-    "merge-and-generate": " npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/merged-report/merged-report.json && npx marge cypress/reports/merged-report/merged-report.json --reportDir ./  --inline",
-    "final": "npx cypress run && merge-and-generate"
+    "clean-reports": "node delete-report.js",
+    "run-tests": "npx cypress run",
+    "merge-test-reports": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/merged-report.json",
+    "generate-final-report": "npx marge cypress/reports/merged-report.json --reportDir ./ --inline",
+    "merge-and-generate-report": "npm run merge-test-reports && npm run generate-final-report",
+    "send-report-email": "node send_report_email.js"
   }
 }

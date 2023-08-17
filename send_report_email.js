@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const configData = require("./config.json");
-const emailConfig = configData.emailConfig;
+const emailConfig = configData;
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -22,7 +22,7 @@ function sendEmail() {
     attachments: [
       {
         filename: "merged-report.html",
-        content: fs.readFileSync("cypress/reports/merged-report/merged-report.html"),
+        content: fs.readFileSync("cypress/reports/merged-report.html", "utf-8"),
       },
     ],
   };
